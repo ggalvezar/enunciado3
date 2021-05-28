@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: example-deploy
   labels:
-    app: example-app
+    app: app
     test: test
   annotations:
     fluxcd.io/tag.example-app: semver:~1.0
@@ -12,7 +12,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: example-app
+      app: app
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -22,10 +22,10 @@ spec:
   template:
     metadata:
       labels:
-        app: example-app
+        app: app
     spec:
       containers:
-      - name: example-app
+      - name: app
         image: ggalvez/enunciado3:1.0.0
         imagePullPolicy: Always
         ports:
